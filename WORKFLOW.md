@@ -6,6 +6,20 @@
 
 ---
 
+## 文件职责
+
+```text
+WORKFLOW.md 定义流程。
+TASK.md 定义本轮授权。
+AI_CONTRACT.md 定义执行纪律。
+```
+
+AI 必须按本文件阶段顺序执行。
+
+如果 `TASK.md` 未授权进入某阶段，AI 不得自行推进到该阶段。
+
+---
+
 ## 阶段 1：立项访谈
 
 用户与 ChatGPT 讨论项目方向。
@@ -16,6 +30,15 @@
 
 ```text
 PROJECT.md
+TASK.md 的下一阶段任务
+```
+
+进入下一阶段前必须满足：
+
+```text
+用户已确认项目基本方向
+PROJECT.md 已记录核心玩法、目标体验、Demo 当前范围
+TASK.md 已更新为 GPT_DEMO 阶段任务
 ```
 
 ---
@@ -52,6 +75,15 @@ PROJECT.md 的方向更新
 TASK.md 的下一阶段任务
 ```
 
+进入下一阶段前必须满足：
+
+```text
+用户已确认 GPT_DEMO 方向基本正确
+GPT_DEMO/index.html 或指定草图文件已存在
+PROJECT.md 已记录确认后的方向变化
+TASK.md 已更新为规则基线阶段任务
+```
+
 ---
 
 ## 阶段 3：规则基线
@@ -64,6 +96,13 @@ Codex 从已确认的 GPT_DEMO 中提取规则基线。
 
 ```text
 WEB_DEMO/design/rule_baseline.md
+```
+
+进入下一阶段前必须满足：
+
+```text
+rule_baseline.md 已填写，不再只是占位内容
+TASK.md 已更新为定向代码迁移阶段任务
 ```
 
 ---
@@ -82,6 +121,14 @@ Codex 不从零重写，也不整文件复制 GPT_DEMO。
 保持玩家体验、交互规则、节奏和边界条件一致
 ```
 
+进入下一阶段前必须满足：
+
+```text
+核心规则对应代码已迁移到 WEB_DEMO/src/
+迁移范围没有超出 TASK.md 授权
+TASK.md 已更新为模块化重构阶段任务
+```
+
 ---
 
 ## 阶段 5：模块化重构
@@ -98,6 +145,14 @@ WEB_DEMO/src/presentation/
 ```
 
 具体拆分由项目类型决定，不在模板中预设。
+
+进入下一阶段前必须满足：
+
+```text
+重构后 WEB_DEMO 可以运行
+重构未改变 rule_baseline.md 中的体验规则
+TASK.md 已更新为规则继承审计阶段任务
+```
 
 ---
 
@@ -119,6 +174,15 @@ Codex 对比 GPT_DEMO 与 WEB_DEMO。
 WEB_DEMO/design/migration_audit.md
 ```
 
+进入下一阶段前必须满足：
+
+```text
+migration_audit.md 已记录关键偏差
+无意偏差已修复或记录为未完成项
+有意重设计已获得用户确认
+TASK.md 已更新为 WEB_DEMO 正式原型开发任务
+```
+
 ---
 
 ## 阶段 7：WEB_DEMO 正式原型开发
@@ -132,6 +196,15 @@ WEB_DEMO/design/migration_audit.md
 以 rule_baseline.md 为体验基线
 以 migration_audit.md 记录偏差和修正
 策划频繁调整的内容优先配置化
+```
+
+进入 Unity 阶段前必须满足：
+
+```text
+WEB_DEMO 核心体验已稳定
+关键规则已通过审计
+用户确认进入 Unity 阶段
+TASK.md 已更新为 UNITY_PROJECT 阶段任务
 ```
 
 ---
