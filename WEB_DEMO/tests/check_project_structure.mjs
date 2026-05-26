@@ -8,9 +8,22 @@ const requiredRepoFiles = [
   'README.md',
   'PROJECT.md',
   'TASK.md',
+  'RULES.md',
+  'CHANGELOG.md',
+  'DESIGN_INBOX/README.md'
+];
+
+const removedRepoFiles = [
   'WORKFLOW.md',
   'ROLES.md',
-  'CHANGELOG.md'
+  'AI_CONTRACT.md',
+  'CONTROL_REVIEW.md',
+  'DESIGN_INBOX/CHILD_WORKSPACE_README_TEMPLATE.md',
+  'DESIGN_INBOX/SCHEME_NOTE_TEMPLATE.md',
+  'DESIGN_INBOX/SYSTEM_NOTE_TEMPLATE.md',
+  'GPT_DEMO/README.md',
+  'UNITY_PROJECT/README.md',
+  '_archive/README.md'
 ];
 
 const requiredWebDemoFiles = [
@@ -37,6 +50,7 @@ const requiredWebDemoDirs = [
 ];
 
 const missing = [];
+const unexpected = [];
 
 for (const file of requiredRepoFiles) {
   const target = path.join(repoRoot, file);
@@ -59,9 +73,24 @@ for (const dir of requiredWebDemoDirs) {
   }
 }
 
+for (const file of removedRepoFiles) {
+  const target = path.join(repoRoot, file);
+  if (fs.existsSync(target)) {
+    unexpected.push(file);
+  }
+}
+
 if (missing.length > 0) {
   console.error('Project structure check failed. Missing required paths:');
   for (const item of missing) {
+    console.error(`- ${item}`);
+  }
+  process.exit(1);
+}
+
+if (unexpected.length > 0) {
+  console.error('Project structure check failed. These old files should have been removed:');
+  for (const item of unexpected) {
     console.error(`- ${item}`);
   }
   process.exit(1);
