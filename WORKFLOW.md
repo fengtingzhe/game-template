@@ -20,6 +20,53 @@ AI 必须按本文件阶段顺序执行。
 
 ---
 
+## 多子对话协作流程
+
+在一个项目下，可以创建多个系统任务相关聊天，例如：
+
+```text
+总控
+地图设计
+数据结构
+数值设计
+UI/UX
+剧情与世界观
+技术调研
+```
+
+这些子对话可以并行讨论系统设计，但默认只能把阶段性结论写入：
+
+```text
+DESIGN_INBOX/
+```
+
+子对话写入内容不自动成为正式设计。
+
+总控对话负责读取 `DESIGN_INBOX/`，并在 `CONTROL_REVIEW.md` 中判断：
+
+```text
+采纳
+部分采纳
+暂缓
+废弃
+需要继续讨论
+```
+
+只有经过总控审核，并经用户确认后，内容才允许晋升到正式文件，例如：
+
+```text
+PROJECT.md
+TASK.md
+WEB_DEMO/design/rule_baseline.md
+WEB_DEMO/design/migration_audit.md
+WEB_DEMO/public/assets/data/csv/
+WEB_DEMO/public/assets/data/json/
+WEB_DEMO/src/
+UNITY_PROJECT/
+```
+
+---
+
 ## 阶段 1：立项访谈
 
 用户与 ChatGPT 讨论项目方向。
