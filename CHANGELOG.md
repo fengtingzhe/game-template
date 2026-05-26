@@ -1,5 +1,28 @@
 # CHANGELOG：变更记录
 
+## 2026-05-26 / game-template v0.2-contract
+
+### 新增
+
+- 新增 `AI_CONTRACT.md`，明确 AI 执行契约。
+- 明确三类核心约束文件职责：
+  - `WORKFLOW.md` 定义流程；
+  - `TASK.md` 定义本轮授权；
+  - `AI_CONTRACT.md` 定义执行纪律。
+
+### 修改
+
+- 更新 `README.md`，加入 AI 默认读取范围、执行前检查和核心约束原则。
+- 更新 `TASK.md`，加入 `AI_CONTRACT.md` 读取要求和阶段闸门检查。
+- 更新 `WORKFLOW.md`，为每个阶段增加进入下一阶段前置条件。
+
+### 验证
+
+- 已写入 GitHub。
+- 未在本地执行 `cd WEB_DEMO && npm install && npm run check && npm run build`。
+
+---
+
 ## 2026-05-26 / game-template v0.1-lite
 
 ### 新增
