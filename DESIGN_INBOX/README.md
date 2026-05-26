@@ -11,9 +11,6 @@
 ```text
 DESIGN_INBOX/
 ├── README.md
-├── CHILD_WORKSPACE_README_TEMPLATE.md
-├── SCHEME_NOTE_TEMPLATE.md
-├── SYSTEM_NOTE_TEMPLATE.md
 ├── map_design/
 │   ├── README.md
 │   ├── schemes/
@@ -27,25 +24,6 @@ DESIGN_INBOX/
     ├── schemes/
     └── version_plans/
 ```
-
----
-
-## 适用子对话
-
-同一项目下可以创建多个系统任务相关聊天，例如：
-
-```text
-总控
-地图设计
-数据结构
-数值设计
-战斗系统
-UI/UX
-剧情与世界观
-技术调研
-```
-
-除总控外，每个系统子对话都可以拥有自己的工作区。
 
 ---
 
@@ -74,74 +52,53 @@ UI/UX
 
 `schemes/` 中的内容只是方案记录，不自动进入总控审核。
 
-可以使用：
-
-```text
-SCHEME_NOTE_TEMPLATE.md
-```
-
 ---
 
 ## version_plans/：版本方案区
 
 `version_plans/` 用于保存已经整理成版本方案包的内容。
 
-版本方案包应是可命名、可评审、可被总控分配的阶段性方案。
-
-版本方案包至少应包含：
-
-```text
-方案版本
-方案主题
-适用系统
-本方案目标
-本方案范围
-不包含内容
-设计结论
-关键取舍
-待总控确认
-可能影响的正式文件
-风险与冲突
-建议下一步
-```
-
 只有 `version_plans/` 中的内容，才默认提交给总控审核。
 
-可以使用：
-
-```text
-SYSTEM_NOTE_TEMPLATE.md
-```
+版本方案包应是可命名、可评审、可被总控分配的阶段性方案。
 
 ---
 
-## 子对话写入规则
+## 总控处理方式
 
-系统子对话如果需要写入仓库，默认只能写入自己的工作区：
+总控默认读取各子对话的：
 
 ```text
-DESIGN_INBOX/<system_name>/schemes/
 DESIGN_INBOX/<system_name>/version_plans/
 ```
 
-除非 `TASK.md` 明确授权，子对话不得直接修改：
+总控不默认审核 `schemes/` 中的全部内容，除非：
 
 ```text
-PROJECT.md
-TASK.md
-WORKFLOW.md
-ROLES.md
-AI_CONTRACT.md
-CONTROL_REVIEW.md
-WEB_DEMO/design/rule_baseline.md
-WEB_DEMO/design/migration_audit.md
-WEB_DEMO/src/
-UNITY_PROJECT/
+1. 某个 version_plan 引用了对应 scheme
+2. 用户明确要求总控查看
+3. 总控判断该 scheme 对项目方向有重大影响
 ```
+
+内容经过总控审核并由用户确认后，才能晋升到正式文件或新任务。
 
 ---
 
-## 文件命名建议
+## 命名建议
+
+### 子对话工作区
+
+```text
+DESIGN_INBOX/<system_name>/
+```
+
+示例：
+
+```text
+DESIGN_INBOX/map_design/
+DESIGN_INBOX/data_structure/
+DESIGN_INBOX/ui_ux/
+```
 
 ### schemes/
 
@@ -169,27 +126,193 @@ DESIGN_INBOX/map_design/version_plans/2026-05-26_v01_ring_random_map.md
 
 ---
 
-## 总控处理方式
+## 模板 A：子对话工作区 README
 
-总控对话负责定期读取各子对话的：
+```markdown
+# 子对话工作区说明
+
+## 子对话名称
+
+待填写，例如：地图设计 / 数据结构 / 数值设计 / UI/UX。
+
+## 子对话职责
+
+待填写。
+
+## 可写入内容
+
+### schemes/
+
+用于保存讨论中出现的好方案、备选方案、设计思路。
+
+这些内容只是方案记录，不自动进入总控审核。
+
+### version_plans/
+
+用于保存已经整理成版本方案包的内容。
+
+只有 `version_plans/` 中的文件，才默认提交给总控审核。
+
+## 禁止事项
 
 ```text
-DESIGN_INBOX/<system_name>/version_plans/
+不得直接修改 PROJECT.md
+不得直接修改 TASK.md
+不得直接修改 RULES.md
+不得直接修改 WEB_DEMO/design/rule_baseline.md
+不得直接修改 WEB_DEMO/src/
+不得把普通聊天记录原样写入本目录
 ```
 
-并在 `CONTROL_REVIEW.md` 中判断：
+## 一句话原则
 
 ```text
-采纳
-部分采纳
-暂缓
-废弃
-需要继续讨论
+schemes 保存好想法。
+version_plans 提交可评审版本方案。
+总控只默认审核 version_plans。
+```
 ```
 
-通常情况下，总控不默认审核 `schemes/` 中的全部内容，除非某个版本方案引用了对应方案记录，或用户明确要求总控查看。
+---
 
-只有经过总控确认后，内容才允许晋升到正式文件。
+## 模板 B：schemes 方案记录
+
+```markdown
+# 子对话方案记录
+
+## 来源对话角色
+
+待填写，例如：地图设计 / 数据结构 / 数值设计 / UI/UX / 剧情与世界观 / 技术调研。
+
+## 方案编号
+
+待填写，例如：map-scheme-001。
+
+## 方案主题
+
+待填写。
+
+## 适用系统
+
+待填写。
+
+## 方案内容
+
+待填写。
+
+## 为什么值得保留
+
+待填写。
+
+## 适用场景
+
+待填写。
+
+## 可能问题
+
+待填写。
+
+## 与已有方案的关系
+
+```text
+新方案 / 替代旧方案 / 补充旧方案 / 待比较
+```
+
+## 是否建议进入版本规划
+
+```text
+是 / 否 / 待观察
+```
+
+## 当前状态
+
+```text
+方案记录，未进入总控审核
+```
+```
+
+---
+
+## 模板 C：version_plans 版本方案
+
+```markdown
+# 系统子对话版本方案
+
+## 来源对话角色
+
+待填写，例如：地图设计 / 数据结构 / 数值设计 / UI/UX / 剧情与世界观 / 技术调研。
+
+## 方案版本
+
+待填写，例如：map-v01 / data-v01 / ui-v01。
+
+## 方案主题
+
+待填写。
+
+## 适用系统
+
+待填写。
+
+## 本方案目标
+
+本版本方案要解决什么问题？
+
+待填写。
+
+## 本方案范围
+
+本版本方案包含哪些内容？
+
+- 待填写
+
+## 不包含内容
+
+本版本方案明确不解决哪些问题？
+
+- 待填写
+
+## 设计结论
+
+待填写。
+
+## 关键取舍
+
+记录本方案做出的重要选择，以及为什么这样选。
+
+- 待填写
+
+## 待总控确认
+
+- 待填写
+
+## 可能影响的正式文件
+
+```text
+PROJECT.md
+TASK.md
+WEB_DEMO/design/rule_baseline.md
+WEB_DEMO/design/migration_audit.md
+WEB_DEMO/public/assets/data/csv/
+WEB_DEMO/public/assets/data/json/
+WEB_DEMO/src/
+UNITY_PROJECT/
+```
+
+## 风险与冲突
+
+待填写。
+
+## 建议下一步
+
+待填写。
+
+## 当前状态
+
+```text
+待总控审核
+```
+```
 
 ---
 
