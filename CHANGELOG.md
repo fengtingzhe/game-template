@@ -1,5 +1,30 @@
 # CHANGELOG：变更记录
 
+## 2026-05-26 / game-template v0.6-child-workspaces
+
+### 新增
+
+- 新增 `DESIGN_INBOX/SCHEME_NOTE_TEMPLATE.md`，用于记录子对话中的好方案、备选方案和设计思路。
+- 新增 `DESIGN_INBOX/CHILD_WORKSPACE_README_TEMPLATE.md`，用于创建每个子对话自己的工作区说明。
+
+### 修改
+
+- 更新 `DESIGN_INBOX/README.md`，将 `DESIGN_INBOX/` 从平铺式投递箱调整为“每个子对话一个工作区”的结构。
+- 明确每个子对话工作区推荐包含：
+  - `README.md`
+  - `schemes/`
+  - `version_plans/`
+- 明确 `schemes/` 用于保存好方案和备选方案，不自动进入总控审核。
+- 明确 `version_plans/` 用于提交可评审版本方案，总控默认审核该目录。
+- 更新 `AI_CONTRACT.md`、`README.md`、`WORKFLOW.md`、`TASK.md`，同步子对话工作区、`schemes/`、`version_plans/` 的权限和流程规则。
+
+### 验证
+
+- 已写入 GitHub。
+- 未在本地执行 `cd WEB_DEMO && npm install && npm run check && npm run build`。
+
+---
+
 ## 2026-05-26 / game-template v0.5-version-proposal-inbox
 
 ### 新增
