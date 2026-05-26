@@ -1,5 +1,27 @@
 # CHANGELOG：变更记录
 
+## 2026-05-26 / game-template v0.4-design-inbox
+
+### 新增
+
+- 新增 `DESIGN_INBOX/README.md`，作为系统子对话设计收件箱说明。
+- 新增 `DESIGN_INBOX/SYSTEM_NOTE_TEMPLATE.md`，作为系统子对话设计投递模板。
+- 新增 `CONTROL_REVIEW.md`，作为总控审核与晋升记录。
+
+### 修改
+
+- 更新 `AI_CONTRACT.md`，新增系统子对话投递规则：子对话默认只能写入 `DESIGN_INBOX/`。
+- 更新 `WORKFLOW.md`，新增多子对话协作流程。
+- 更新 `README.md`，新增多子对话协作规则与执行前检查。
+- 更新 `TASK.md`，加入 `DESIGN_INBOX/` 与 `CONTROL_REVIEW.md` 的权限边界。
+
+### 验证
+
+- 已写入 GitHub。
+- 未在本地执行 `cd WEB_DEMO && npm install && npm run check && npm run build`。
+
+---
+
 ## 2026-05-26 / game-template v0.3-ownership-gate
 
 ### 新增
