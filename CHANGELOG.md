@@ -1,5 +1,28 @@
 # CHANGELOG：变更记录
 
+## 2026-05-26 / game-template v0.3-ownership-gate
+
+### 新增
+
+- 在 `AI_CONTRACT.md` 中新增 Codex 任务归属闸门。
+- 在 `ROLES.md` 中新增 Codex 执行前任务归属判断规则。
+
+### 修改
+
+- 更新 `README.md`，加入 Codex 执行前必须判断任务归属并等待用户确认的规则。
+- 明确 Codex 必须在以下三种归属中选择一种：
+  - Codex 自己执行；
+  - DeepSeek 执行，Codex 审核；
+  - Codex + DeepSeek 协作。
+- 明确用户确认前，Codex 不得修改任何文件、不得创建分支、不得提交代码、不得让 DeepSeek 执行子任务。
+
+### 验证
+
+- 已写入 GitHub。
+- 未在本地执行 `cd WEB_DEMO && npm install && npm run check && npm run build`。
+
+---
+
 ## 2026-05-26 / game-template v0.2-contract
 
 ### 新增
