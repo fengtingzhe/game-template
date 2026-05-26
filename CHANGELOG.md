@@ -1,5 +1,27 @@
 # CHANGELOG：变更记录
 
+## 2026-05-26 / game-template v0.5-version-proposal-inbox
+
+### 新增
+
+- 明确 `DESIGN_INBOX/` 是“版本方案投递箱”，不是每次对话的自动记录区。
+- 更新 `DESIGN_INBOX/SYSTEM_NOTE_TEMPLATE.md`，改为“系统子对话版本方案投递模板”。
+
+### 修改
+
+- 更新 `DESIGN_INBOX/README.md`，明确只有形成可命名、可评审、可被总控分配的版本方案包后，才写入 `DESIGN_INBOX/`。
+- 更新 `AI_CONTRACT.md`，新增版本方案包写入条件，禁止普通问答、零散灵感、未整理头脑风暴进入 `DESIGN_INBOX/`。
+- 更新 `README.md`，将“阶段性设计投递”改为“版本方案包投递”。
+- 更新 `WORKFLOW.md`，将多子对话协作流程改为版本方案包投递流程。
+- 更新 `TASK.md`，明确系统子对话只有形成版本方案包后才允许写入 `DESIGN_INBOX/`。
+
+### 验证
+
+- 已写入 GitHub。
+- 未在本地执行 `cd WEB_DEMO && npm install && npm run check && npm run build`。
+
+---
+
 ## 2026-05-26 / game-template v0.4-design-inbox
 
 ### 新增
