@@ -1,5 +1,59 @@
 # CHANGELOG：变更记录
 
+## 2026-05-26 / game-template v0.7-merge-rules
+
+### 新增
+
+- 新增 `RULES.md`，作为统一规则来源。
+- 用 `.gitkeep` 保留 `GPT_DEMO/`、`UNITY_PROJECT/`、`_archive/` 空目录。
+
+### 合并
+
+- 将以下文件内容合并进 `RULES.md`：
+  - `WORKFLOW.md`
+  - `ROLES.md`
+  - `AI_CONTRACT.md`
+  - `CONTROL_REVIEW.md`
+- 将以下模板内容合并进 `DESIGN_INBOX/README.md`：
+  - 子对话工作区 README 模板
+  - schemes 方案记录模板
+  - version_plans 版本方案模板
+
+### 删除
+
+- 删除旧规则文件：
+  - `WORKFLOW.md`
+  - `ROLES.md`
+  - `AI_CONTRACT.md`
+  - `CONTROL_REVIEW.md`
+- 删除已合并的模板文件：
+  - `DESIGN_INBOX/CHILD_WORKSPACE_README_TEMPLATE.md`
+  - `DESIGN_INBOX/SCHEME_NOTE_TEMPLATE.md`
+  - `DESIGN_INBOX/SYSTEM_NOTE_TEMPLATE.md`
+- 删除多余说明文件：
+  - `GPT_DEMO/README.md`
+  - `UNITY_PROJECT/README.md`
+  - `_archive/README.md`
+
+### 修改
+
+- 简化 `README.md`，默认读取文件改为：
+  - `README.md`
+  - `PROJECT.md`
+  - `TASK.md`
+  - `RULES.md`
+- 更新 `PROJECT.md`，将阶段拆分为“当前主阶段”和“当前子阶段”。
+- 简化 `TASK.md`，移除长期规则重复内容，改为引用 `RULES.md`。
+- 简化 `WEB_DEMO/README.md`，只保留定位和启动方式。
+- 更新 `WEB_DEMO/tests/check_project_structure.mjs`，检查新结构并阻止旧规则文件回流。
+
+### 验证
+
+- 已写入 GitHub。
+- 未在本地执行 `cd WEB_DEMO && npm install && npm run check && npm run build`。
+
+---
+
 ## 2026-05-26 / game-template v0.6-child-workspaces
 
 ### 新增
