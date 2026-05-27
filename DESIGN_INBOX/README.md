@@ -84,6 +84,151 @@ DESIGN_INBOX/<system_name>/version_plans/
 
 ---
 
+## 子对话 → 总控 → 正式任务流程
+
+本流程用于多个 ChatGPT 子对话并行讨论同一个游戏项目时，避免内容散落在聊天上下文中，也避免子对话直接改动正式项目文件。
+
+### 1. 子对话只负责投递，不负责拍板
+
+地图设计、数据结构、数值设计、UI/UX、剧情世界观、技术调研等系统子对话，可以把讨论结论写入自己的 `DESIGN_INBOX/<system_name>/` 工作区。
+
+子对话可以写：
+
+```text
+DESIGN_INBOX/<system_name>/schemes/
+DESIGN_INBOX/<system_name>/version_plans/
+```
+
+子对话默认不能直接改：
+
+```text
+PROJECT.md
+TASK.md
+RULES.md
+WEB_DEMO/design/rule_baseline.md
+WEB_DEMO/design/migration_audit.md
+WEB_DEMO/src/
+UNITY_PROJECT/
+```
+
+除非 `TASK.md` 明确授权，否则子对话不能直接修改正式文件。
+
+### 2. schemes 保存好想法
+
+当子对话中出现值得保留但尚未形成版本方案的内容，写入：
+
+```text
+DESIGN_INBOX/<system_name>/schemes/YYYY-MM-DD_scheme_XXX_topic.md
+```
+
+适合内容包括：
+
+```text
+好方案
+备选方案
+局部机制思路
+设计参考转译
+待比较方案
+暂时不确定但可能有价值的方向
+```
+
+`schemes/` 是资料池，不自动进入总控审核。
+
+### 3. version_plans 提交可评审方案
+
+当子对话已经把内容整理成一个阶段性版本方案，写入：
+
+```text
+DESIGN_INBOX/<system_name>/version_plans/YYYY-MM-DD_vXX_topic.md
+```
+
+`version_plans/` 中的内容应满足：
+
+```text
+可命名
+可评审
+有明确目标
+有明确范围
+有明确不做内容
+有关键取舍
+有待总控确认问题
+能判断是否进入 TASK.md 或正式设计文档
+```
+
+总控默认只审核 `version_plans/`。
+
+### 4. 总控审核 version_plans
+
+用户可以在总控对话中发起审核，例如：
+
+```text
+请审核 DESIGN_INBOX/map_design/version_plans/ 下的新方案
+请审核 DESIGN_INBOX/data_structure/version_plans/2026-05-26_v01_config_schema.md
+```
+
+总控审核时应输出：
+
+```text
+审核对象
+方案摘要
+采纳结论：采纳 / 部分采纳 / 暂缓 / 废弃 / 需要继续讨论
+采纳理由
+不采纳或暂缓理由
+需要用户确认的问题
+是否建议晋升正式文件
+是否建议写入 TASK.md
+```
+
+### 5. 晋升必须经过用户确认
+
+总控不能把子对话方案自动写入正式文件。
+
+必须经过用户确认后，才允许晋升到：
+
+```text
+PROJECT.md
+TASK.md
+WEB_DEMO/design/rule_baseline.md
+WEB_DEMO/design/migration_audit.md
+WEB_DEMO/docs/
+WEB_DEMO/src/
+UNITY_PROJECT/
+```
+
+如果方案需要进入工程实现，应先写入 `TASK.md`，再由 Codex 按任务归属闸门执行。
+
+### 6. 推荐工作流
+
+```text
+子对话讨论
+↓
+子对话把好想法写入 schemes/
+↓
+子对话把成熟方案整理成 version_plans/
+↓
+用户通知总控审核 version_plans/
+↓
+总控输出采纳 / 部分采纳 / 暂缓 / 废弃 / 继续讨论
+↓
+用户确认
+↓
+总控晋升到 PROJECT.md / TASK.md / 正式设计文档
+↓
+Codex 按 TASK.md 执行工程实现
+```
+
+### 7. 一句话原则
+
+```text
+子对话负责沉淀。
+schemes 保存好想法。
+version_plans 提交可评审版本方案。
+总控负责审核、合并、取舍、晋升。
+Codex 只按 TASK.md 执行工程任务。
+```
+
+---
+
 ## 命名建议
 
 ### 子对话工作区
