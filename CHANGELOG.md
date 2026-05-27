@@ -1,5 +1,27 @@
 # CHANGELOG：变更记录
 
+## 2026-05-27 / game-template v0.8-inbox-promotion-clarity
+
+### 修改
+
+- 更新 `DESIGN_INBOX/README.md`，进一步缩短子对话工作区说明。
+- 明确总控可以直接晋升的目标通常是：
+  - `PROJECT.md`
+  - `TASK.md`
+  - `WEB_DEMO/design/rule_baseline.md`
+  - `WEB_DEMO/design/migration_audit.md`
+  - `WEB_DEMO/public/assets/data/csv/`
+  - `WEB_DEMO/public/assets/data/json/`
+- 明确如果方案涉及 `WEB_DEMO/src/` 或 `UNITY_PROJECT/`，不得直接晋升到源码目录，必须先晋升为 `TASK.md` 中的新工程任务，再由 Codex 按 `RULES.md` 的任务归属闸门执行。
+- 更新 `version_plans` 模板，将“可能影响的正式文件”改为“可能影响的正式文件或后续任务”，避免暗示子对话方案可以直接修改源码。
+
+### 验证
+
+- 已写入 GitHub。
+- 未在本地执行 `cd WEB_DEMO && npm install && npm run check && npm run build`。
+
+---
+
 ## 2026-05-26 / game-template v0.7-merge-rules
 
 ### 新增
